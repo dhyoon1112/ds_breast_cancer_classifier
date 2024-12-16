@@ -46,4 +46,12 @@ https://www.23andme.com/
 #### Preprocessing
 My initial transformation will be to encode the diagnosis column, such that Malignant = 1 and Benign = 0. Since there are only two unique values here, this will be easy to encode without having to use the OrdinalEncoder library.
 
-![](image1.png)
+![](images/image1.png)
+
+  * id: Drop this column because it is a 1-1 mapping to each row. This 100% correlation will not contribute to training the model.
+    ![](images/image2.png)
+  * diagnosis: Omit this column from the scaler because it is a classification column
+    ![](images/image2.png)
+
+I intend to use the Scaler library on the data except on ‘id’ and ‘diagnosis’.
+![](images/image3.png)
