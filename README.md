@@ -51,7 +51,22 @@ My initial transformation will be to encode the diagnosis column, such that Mali
   * id: Drop this column because it is a 1-1 mapping to each row. This 100% correlation will not contribute to training the model.
     ![](images/image2.png)
   * diagnosis: Omit this column from the scaler because it is a classification column
-    ![](images/image2.png)
 
 I intend to use the Scaler library on the data except on ‘id’ and ‘diagnosis’.
 ![](images/image3.png)
+
+I will separate my data for the columns with the measurements and a classification column. ‘x’ for the measurements, and ‘y’ for the classification.
+![](images/image4.png)
+I then will use stratified K folds. Given my dataset has 569 rows, I will be more conservative with the amount of data separated for the test and validation sets. Instead of the typical 80/20 split, I will do an 85/15 split.
+
+   * Training Set: 85% (484 rows)
+   * Test Set: 15% (85 rows)
+
+![](images/image5.png)
+
+I will then use 20 folds using the stratified K folds to further split my training data into smaller training sets and validation sets to use for hyperparameter tuning later on.
+![](images/image6.png)
+
+Visualization of Data:
+First, I decided to visualize the mean, standard error, and worst columns separately. We can generally see the strongest correlations (negative included) are between the circle’s sizing (radius, perimeter, area) vs the circle’s shape (fractal_dimension, symmetry, concave points_mean). These relationships may offer insight into which columns can train the model better.
+![](images/image7.png)
